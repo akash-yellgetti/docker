@@ -11,10 +11,15 @@ services:
         links:
             - node
     node:
-        build: ./containers/node/16/.
+        build: ./containers/node/14/.
         expose:
             - "3000"
+            - "4200"
+            - "4300"
         ports: 
             - "3000:3000"
+            - "4200:4200"
+            - "4300:4300"
         volumes:
-            - './containers/node/16/app:/home/node/app'
+            - '~/.ssh:/root/.ssh'
+            - './volumes:/volumes'
