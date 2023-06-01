@@ -1,25 +1,55 @@
 version: '3'
 services:
-    nginx:
-        image: nginx:alpine
-        volumes:
-            - './volumes:/volumes'
-            - './containers/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
-        ports:
-            - '443:443'
-            - '80:80'
-        links:
-            - node
-    node:
-        build: ./containers/node/14/.
-        expose:
-            - "3000"
-            - "4200"
-            - "4300"
-        ports: 
-            - "3000:3000"
-            - "4200:4200"
-            - "4300:4300"
-        volumes:
-            - '~/.ssh:/root/.ssh'
-            - './volumes:/volumes'
+  nginx:
+    image: 'nginx:alpine'
+    volumes:
+      - './volumes:/volumes'
+      - './containers/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+    ports:
+      - '443:443'
+      - '80:80'
+    links:
+      - node
+  node:
+    build: ./containers/node/14/.
+    expose:
+      - '3000'
+      - '4200'
+      - '4300'
+      - '8000'
+      - '8001'
+      - '8002'
+      - '8003'
+      - '8004'
+      - '8005'
+      - '8006'
+      - '8007'
+      - '8008'
+      - '8009'
+      - '8010'
+      - '8011'
+      - '8012'
+      - '8013'
+      - '8014'
+    ports:
+      - '3000:3000'
+      - '4200:4200'
+      - '4300:4300'
+      - '8000:8000'
+      - '8001:8001'
+      - '8002:8002'
+      - '8003:8003'
+      - '8004:8004'
+      - '8005:8005'
+      - '8006:8006'
+      - '8007:8007'
+      - '8008:8008'
+      - '8009:8009'
+      - '8010:8010'
+      - '8011:8011'
+      - '8012:8012'
+      - '8013:8013'
+      - '8014:8014'
+    volumes:
+      - '~/.ssh:/root/.ssh'
+      - './volumes:/volumes'
