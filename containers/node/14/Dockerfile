@@ -6,11 +6,28 @@ RUN apk update
 # Install git
 RUN apk add git
 
+# git version
+RUN git version
+
 # Install python
 RUN apk add --no-cache python3 py3-pip
 
-# git version
-RUN git version
+RUN apk add --no-cache --virtual .gyp \
+        make \
+        g++
+
+# Make ssh dir
+# RUN mkdir /root/.ssh/
+
+RUN apk add --no-cache \ 
+        openssh \
+    && ssh-keygen -A \
+    && mkdir /root/.ssh \
+    && chmod 0700 /root/.ssh 
+
+RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+
+RUN echo cat /etc/ssh/ssh_config
 
 # backend Packages
 
@@ -41,7 +58,11 @@ RUN npm install -g @angular/core@14.2.10
 
 RUN npm install -g rxjs
 
-RUN npm install -g @angular/material@14.2.10 @angular/animations@14.2.10 @angular/cdk@14.2.10
+RUN npm install -g @angular/material@14
+
+RUN npm install -g @angular/animations@14
+
+RUN npm install -g @angular/cdk@14
 
 RUN npm install -g hammerjs
 
