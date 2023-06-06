@@ -71,12 +71,12 @@ RUN npm install -g socket.io
 RUN npm install -g concurrently
 
 
-WORKDIR /app
-COPY ./app .
-
 RUN mkdir app1
 
 COPY ./app1 /app1
+
+WORKDIR /app
+COPY ./app .
 
 RUN npm install
 
