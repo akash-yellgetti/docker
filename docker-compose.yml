@@ -52,6 +52,7 @@ services:
     - 8013:8013
     - 8014:8014
     volumes:
+    - "./containers/node/14/app1:/app1"
     - "~/.ssh:/root/.ssh"
     - "./volumes:/volumes"
   mongo:

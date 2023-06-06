@@ -68,8 +68,21 @@ RUN npm install -g hammerjs
 
 RUN npm install -g socket.io
 
+RUN npm install -g concurrently
+
 
 WORKDIR /app
 COPY ./app .
+
+RUN mkdir app1
+
+COPY ./app1 /app1
+
 RUN npm install
-CMD ["npm", "start" ]
+
+COPY entrypoint.sh .
+
+RUN chmod +x entrypoint.sh
+
+# Set the entry point command
+ENTRYPOINT ["/bin/ash", "-c", ". entrypoint.sh"]
